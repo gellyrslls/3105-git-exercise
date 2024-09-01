@@ -4,7 +4,15 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
+function getGreeting() {
+    const hour = new Date().getHours();
+    if (hour < 12) return "Good morning";
+    if (hour < 18) return "Good afternoon";
+    return "Good evening";
+}
+
 rl.question('What is your name? ', (name) => {
-    console.log(`Hello, ${name}!`);
+    const greeting = getGreeting();
+    console.log(`${greeting}, ${name}!`);
     rl.close();
 });
